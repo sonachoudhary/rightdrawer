@@ -1,0 +1,83 @@
+Searching 376 files for "chevron"
+
+/Applications/RN/WeSmart/js/components/common/chatlist/teacherchatlist.js:
+  499                          <Button transparent onPress={()=>Actions.pop()}>
+  500                            <Image                      
+  501:                                   source={require("../../../../assets/images/chevron-leftwhite.png")}
+  502                                    style={{ width:15, height: 25, position:'absolute', left:10 ,marginLeft:10}}
+  503                                  /> 
+
+/Applications/RN/WeSmart/js/components/common/fees/feedetail.js:
+  152                          <Button transparent onPress={()=>Actions.Fees()}>
+  153                            <Image                      
+  154:                                   source={require("../../../../assets/icon/chevron-left.png")}
+  155                                    style={{ width:15, height: 25, position:'absolute', left:10 ,marginLeft:10}}
+  156                                  /> 
+
+/Applications/RN/WeSmart/js/components/customer/Task/add_task.js:
+  216                      <Button transparent onPress={() =>Actions.Task()}>
+  217                         <Image                      
+  218:                         source={require("../../../../assets/icon/chevron-left.png")}
+  219                          style={{ width:9, height: 18, marginLeft:17}}
+  220                        />                          
+
+/Applications/RN/WeSmart/js/obj/picker/index.js:
+  309                  testID="input_accessory_view"
+  310              >
+  311:                 <View style={[defaultStyles.chevronContainer, style.chevronContainer]}>
+  312                      <TouchableOpacity
+  313                          activeOpacity={onUpArrow ? 0.5 : 1}
+  ...
+  316                          <View
+  317                              style={[
+  318:                                 defaultStyles.chevron,
+  319:                                 style.chevron,
+  320:                                 defaultStyles.chevronUp,
+  321:                                 style.chevronUp,
+  322:                                 onUpArrow ? [defaultStyles.chevronActive, style.chevronActive] : {},
+  323                              ]}
+  324                          />
+  ...
+  330                          <View
+  331                              style={[
+  332:                                 defaultStyles.chevron,
+  333:                                 style.chevron,
+  334:                                 defaultStyles.chevronDown,
+  335:                                 style.chevronDown,
+  336                                  onDownArrow
+  337:                                     ? [defaultStyles.chevronActive, style.chevronActive]
+  338                                      : {},
+  339                              ]}
+
+/Applications/RN/WeSmart/js/obj/picker/styles.js:
+   23          zIndex: 2,
+   24      },
+   25:     chevronContainer: {
+   26          flexDirection: 'row',
+   27      },
+   28:     chevron: {
+   29          width: 15,
+   30          height: 15,
+   ..
+   34          borderRightWidth: 1.5,
+   35      },
+   36:     chevronUp: {
+   37          marginLeft: 11,
+   38          transform: [{ translateY: 4 }, { rotate: '-45deg' }],
+   39      },
+   40:     chevronDown: {
+   41          marginLeft: 22,
+   42          transform: [{ translateY: -5 }, { rotate: '135deg' }],
+   43      },
+   44:     chevronActive: {
+   45          borderColor: '#007aff',
+   46      },
+
+/Applications/RN/WeSmart/js/themes/Svgs.js:
+   66      viewBox: '0 0 4 9.104'
+   67    },
+   68:   RightChevron: {
+   69      svg: (
+   70        <G>
+
+23 matches across 6 files
