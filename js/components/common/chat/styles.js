@@ -19,14 +19,14 @@ export default {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'space-between',
-    backgroundColor: '#1A1A1A',
+    backgroundColor: '#FFFFFF',
     minHeight:250,
   },
   outerand:{ 
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'space-between',
-    backgroundColor: '#1A1A1A',
+    backgroundColor: '#FFFFFF',
     
     marginBottom:10,
   },
@@ -40,10 +40,10 @@ export default {
     marginTop:32
   },
   topouter:{
-    flexDirection:'row', marginBottom:15,backgroundColor:'#000000',paddingTop:50,paddingBottom:10
+    flexDirection:'row', marginBottom:15,backgroundColor:'#ed1e79',paddingTop:50,paddingBottom:10
   },
   topouterand:{
-    flexDirection:'row', marginBottom:15,backgroundColor:'#000000',paddingTop:20,paddingBottom:10
+    flexDirection:'row', marginBottom:15,backgroundColor:'#ed1e79',paddingTop:20,paddingBottom:10
   },
   iosHeaderTitle: {
     fontSize: 18,
@@ -63,14 +63,15 @@ export default {
   messages: {
     flex: 1,
     height: deviceHeight - 100,
-    marginRight:5
+    marginRight:5,
+    backgroundColor:'#ed1e79',
   },
 
   //InputBar
 
   inputBar: {
     flexDirection: 'row',
-    backgroundColor:'#000000',
+    backgroundColor:'#ed1e79',
     paddingLeft:18,
     paddingTop:10,
     paddingBottom:10,
@@ -80,7 +81,7 @@ export default {
   },
   inputBarand:{
     flexDirection: 'row',
-    backgroundColor:'#000000',
+    backgroundColor:'#ed1e79',
     paddingLeft:18,
     paddingTop:10,
     paddingBottom:10,
@@ -90,8 +91,8 @@ export default {
   },
   textBox: {
     borderRadius: 25,
-    backgroundColor:'#373737',
-    color:'#ffffff',
+    backgroundColor:'#ffffff',
+    color:'#ed1e79',
     flex: 1,
     width:deviceWidth-150,
     fontSize: 16,
@@ -123,7 +124,7 @@ export default {
   },
 
   messageBubbleLeft: {
-    backgroundColor: '#484848',
+    backgroundColor: '#FFFFFF',
     borderWidth:1,
     borderColor:'#484848',
     paddingRight:30,
@@ -132,7 +133,7 @@ export default {
   },
 
   messageBubbleTextLeft: {
-    color: '#ffffff',
+    color: '#ed1e79',
     paddingHorizontal:10,
     fontFamily:'ProximaNova-Regular',
     paddingVertical:10,
@@ -141,14 +142,14 @@ export default {
   },
 
   messageBubbleRight: {
-    backgroundColor: '#ED4261',
+    backgroundColor: '#FFFFFF',
     paddingRight: 10,
     fontSize:15,
     
   },
 
   messageBubbleTextRight: {
-    color: '#ffffff',
+    color: '#ed1e79',
     fontFamily:'ProximaNova-Regular',
     padding: 10,
   },
@@ -164,12 +165,12 @@ export default {
     paddingLeft:10,
   },
   showmessageBubble:{
-    color: '#ffffff',
+    color: '#ed1e79',
     fontSize:15,
     
   },
   showmessageBubble1:{
-    color: '#ffffff',
+    color: '#ed1e79',
     fontSize:13,
     opacity:0.5
   },
@@ -321,7 +322,7 @@ export default {
     fontWeight: 'bold',
     textAlign: 'center',
     marginTop:40,
-    borderColor:'#FFFFFF',
+    borderColor:'#000',
     borderRadius:25,
     borderWidth: 2,
     paddingTop:10,
@@ -383,7 +384,7 @@ export default {
   datetext:{
     borderRadius:18,
     borderWidth:0.5,
-    borderColor:'#787878',
+    borderColor:'#000',
     paddingVertical:8,
     paddingHorizontal:40,
     width:'auto'

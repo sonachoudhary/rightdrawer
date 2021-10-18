@@ -88,6 +88,7 @@ class Chatlist extends Component {
       appointment_time: undefined,
       loggedInUserId: idLogedid,
       notcount:0,
+      chatlist:[{username:'abc'},{username:'abc'},{username:'abc'},{username:'abc'},{username:'abc'},{username:'abc'},]
     };
     
     //this.props.dispatch(getProfileData(this.state.trainerProfileId));    
@@ -141,7 +142,7 @@ class Chatlist extends Component {
   }
 
   openChatWindow(userId){
-    
+    Actions.Chat();
     this.props.openChatWindow(userId);
   }
 
@@ -205,9 +206,9 @@ class Chatlist extends Component {
           
           <View style={styles.lextText}>
             <View style={{flexDirection:'row'}}>
-              <Text style={styles.textColor}>{item.name}</Text>
+              <Text style={styles.textColor}>username</Text>
               <View style={styles.rightText}>            
-                  <Text style={styles.dateColor}>{item.time}</Text>
+                  <Text style={styles.dateColor}>12:40 pm</Text>
                   
               </View>
             </View>
@@ -229,73 +230,35 @@ class Chatlist extends Component {
   render() {
     console.log('this.props.chatlist',this.props.chatlist);
     return (
-      <Container style={{ backgroundColor: "#1A1A1A" }}>
+      <Container style={{ backgroundColor: "#ed1e79" }}>
       <StatusBar barStyle="light-content" />
-        { this.state.loggedInUserId != undefined &&
-            <View style={Platform.OS === "ios" ? styles.iosnot : styles.androidnot}>
-                 <TouchableOpacity onPress={() => Actions.notifications()}>
-                  <IconBadge
-                      MainElement={
-                        <Image source={require("../../../../assets/images/notification.png")} style={{width:22,height:24,marginTop:8,marginRight:10}} />
-                      }
-                      BadgeElement={
-                        <Text style={{color:'#FFFFFF',fontSize:10,fontFamily:'ProximaNova-Bold'}}>{this.state.notcount}</Text>
-                      }
-                      IconBadgeStyle={
-                        {width:15,
-                        height:20,
-                        backgroundColor: '#FF0000',borderWidth:2,borderColor:'#008000'}
-                      }
-                      Hidden={this.state.notcount==0}
-                  />
-                  </TouchableOpacity>
-            </View>
-        }
-        <View style={{width: deviceWidth-100,paddingLeft:100,justifyContent:'center',alignItems:'center',marginTop:deviceHeight/16}}>
-            <Text style={{color:'#ffffff',fontSize:20,fontFamily:'ProximaNova-Bold'}}>Chat</Text>
+        
+        <TouchableOpacity style={{width: deviceWidth-100,paddingLeft:20,marginTop:deviceHeight/16,flexDirection:'row',}} onPress={()=>Actions.Home()}>
+
+                      <Icon
+                        name="md-arrow-back"
+                        style={{ fontSize: 28, color: "#ffffff" }}
+                      />
+                                                   
+                    
+            <Text style={{color:'#ffffff',fontSize:24,fontFamily:'ProximaNova-Bold',marginLeft:'10%'}}>Chat</Text>
            
-        </View>
-        { this.state.loggedInUserId != undefined &&
-        <Content style={{ backgroundColor: "#1A1A1A",marginTop:30,marginBottom:80 }}>          
+        </TouchableOpacity>
+       
+        <Content style={{ backgroundColor: "#ffffff",marginTop:20,marginBottom:10 }}>          
           <View>
-            {
-              this.props.chatlist && this.props.chatlist.length > 0 ? 
+            
               <FlatList
-                data={this.props.chatlist}
+                data={this.state.chatlist}
                 renderItem={this.renderRow}
-              />  : 
-              <Text style={ styles.emptyMessageStyle }>No chat available</Text>
-            }
+              />  
+             
           </View>          
         </Content> 
-        }
-        { this.state.loggedInUserId != undefined &&
-          <Footer /> 
-        }
+        
+        
 
-        {this.state.loggedInUserId == undefined  &&
-          <ScrollView>
-            <View style={{ alignSelf: "center",justifyContent: 'center',marginTop:70}}>
-                <Image
-                    source={require("../../../../assets/images/logo.png")}
-                    style={styles.mainlogo}
-                  />
-              </View>
-              <View style={{alignSelf: "center",justifyContent: 'center',marginTop:30}}>
-                <Text style={styles.sevenhomeheading}>Please Login or Register to interact</Text>
-                 <Text style={styles.sevenhomeheading}>with Real Users</Text>
-              </View>
-              <View style={{ flexDirection:'row',alignSelf: "center",justifyContent: 'center',marginBottom:314}}>
-                <Button onPress={() => Actions.signIn()} block style={styles.regBtn}>
-                        <Text style={{ color: '#fff', fontSize:19,fontFamily:'ProximaNova-Bold',lineHeight:19}}>Login</Text>
-                  </Button>
-                  <Button onPress={() => Actions.signUp()} block style={[styles.regBtn,{marginLeft:14}]}>
-                        <Text style={{ color: '#fff', fontSize:19,fontFamily:'ProximaNova-Bold',lineHeight:19}}>Register</Text>
-                  </Button>
-              </View>
-          </ScrollView>
-
-        }
+       
 
       </Container>
     );

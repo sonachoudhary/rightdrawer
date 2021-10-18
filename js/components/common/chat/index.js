@@ -426,12 +426,12 @@ class Chat extends Component {
     }
     
     return (
-    <KeyboardAvoidingView style={{ flex: 1, flexDirection: 'column',backgroundColor: "#1A1A1A"}} behavior={Platform.OS === "ios" ? "padding" : null} enabled keyboardVerticalOffset={0}>
+    <KeyboardAvoidingView style={{ flex: 1, flexDirection: 'column',backgroundColor: "#ed1e79"}} behavior={Platform.OS === "ios" ? "padding" : null} enabled keyboardVerticalOffset={0}>
 
      
          <StatusBar barStyle="light-content" />
           <View style={Platform.OS === "ios" ? styles.topouter : styles.topouterand}>
-              <Button transparent onPress={() => Actions.chatlist()}>
+              <Button transparent onPress={() => Actions.Chatlist()}>
                <Image
                 source={require("../../../../assets/images/left-arrow.png")}
                 style={{ width:23, height: 16 }}
@@ -457,7 +457,7 @@ class Chat extends Component {
               
           </View>
 
-         { this.state.loggedInUserId != undefined &&
+         
             <View style={Platform.OS === "ios" ? styles.outer : styles.outerand}>
                 <ScrollView 
                     ref={(ref) => { this.scrollView = ref }} 
@@ -470,40 +470,18 @@ class Chat extends Component {
                 </ScrollView>
                            
             </View> 
-          }
+          
 
-          { this.state.loggedInUserId != undefined &&
+          
             <View>
             <InputBar onSendPressed={() => this._sendMessage()} 
                     onSizeChange={() => this._onInputSizeChange()}
                     onChangeText={(text) => this._onChangeInputBarText(text)}
                     text={this.state.inputBarText}/>
             </View>
-          }
+          
 
-          {this.state.loggedInUserId == undefined  &&
-            <ScrollView>
-              <View style={{ alignSelf: "center",justifyContent: 'center',marginTop:50}}>
-                  <Image
-                      source={require("../../../../assets/images/logo.png")}
-                      style={styles.mainlogo}
-                    />
-                </View>
-                <View style={{alignSelf: "center",justifyContent: 'center',marginTop:30}}>
-                  <Text style={styles.sevenhomeheading}>Please Login or Register to interact</Text>
-                  <Text style={styles.sevenhomeheading}>with Real Users</Text>
-                </View>
-                <View style={{ flexDirection:'row',alignSelf: "center",justifyContent: 'center',marginBottom:314}}>
-                  <Button onPress={() => Actions.signIn()} block style={styles.regBtn}>
-                        <Text style={{ color: '#fff', fontSize:19,fontFamily:'ProximaNova-Bold',lineHeight:19}}>Login</Text>
-                  </Button>
-                  <Button onPress={() => Actions.signUp()} block style={[styles.regBtn,{marginLeft:14}]}>
-                        <Text style={{ color: '#fff', fontSize:19,fontFamily:'ProximaNova-Bold',lineHeight:19}}>Register</Text>
-                  </Button>
-                </View>
-            </ScrollView>
-
-          }
+          
         </KeyboardAvoidingView>
 
 
@@ -603,7 +581,7 @@ class InputBar extends Component {
                         onChangeText={(text) => this.props.onChangeText(text)}
                         onContentSizeChange={this.props.onSizeChange}
                         placeholder = "Type your message.."
-                        placeholderTextColor = "#FFFFFF"
+                        placeholderTextColor = "#ed1e79"
                         value={this.props.text}/>
                         <View style={styles.sendButton}>
                             <TouchableOpacity onPress={() => this.props.onSendPressed()}>

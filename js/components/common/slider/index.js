@@ -70,10 +70,11 @@ class Slider extends Component {
     }, 600);
   }
   componentDidMount() {
+    
     if(this.props.isLoggedIn == true){
         setTimeout(function(){ Actions.profile(); },10);
     }else {
-      setTimeout(function(){ Actions.signStart(); },1500);
+      setTimeout(function(){ Actions.signStart(); },50);
     }
 
     AppState.addEventListener('change', this._handleAppStateChange);

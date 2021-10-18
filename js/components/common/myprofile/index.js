@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from 'redux-form';
-import { Platform, View,Dimensions,Image,TouchableOpacity,ImageBackground,StatusBar,ScrollView } from "react-native";
+import { Platform, View,Dimensions,Image,TouchableOpacity,ImageBackground,StatusBar,ScrollView,TextInput,StyleSheet } from "react-native";
 import FAIcon from "react-native-vector-icons/FontAwesome";
 import PropTypes from "prop-types";
 import {
@@ -21,6 +21,7 @@ import {
   Input
 } from "native-base";
 import { Actions } from "react-native-router-flux";
+import RNPickerSelect from 'react-native-picker-select';
 
 import * as appStateSelector from "../../../reducers/driver/appState";
 
@@ -66,12 +67,24 @@ class Myprofile extends Component {
 
   constructor(props) {
     super(props);
-    const idLogedid =  this.props.userDetail._id;
     this.state = { 
-      loggedInUserId: idLogedid,
-      name: this.props.userDetail.fname +' '+this.props.userDetail.lname,
-      profile_pic:this.props.profileUrl,
-      notcount:0,
+      fname:'',
+      lname:'',
+      email:'',
+      Password:'',
+      ConfirmPassword:'',
+      Address:'',
+      Country:'',
+      Phone:'',
+      Gender:'',
+      Birth:'',
+      Height:'',
+      Status:'',
+      Religion:'',
+      Caste:'',
+      Education:'',
+      Occupation:'',
+      Income:'',
     };
   }
 
@@ -79,7 +92,7 @@ class Myprofile extends Component {
     this.props.logOutUserAsync(this.props.jwtAccessToken);
   }
 
-  componentDidMount() {this.notificationcount(this.props.user_id); }
+  componentDidMount() { }
 
   componentWillUnmount() { }
 
@@ -120,153 +133,287 @@ class Myprofile extends Component {
     
 
     return (
-      <Container style={{ backgroundColor: "#1A1A1A" }}>
+      <Container style={{ backgroundColor: "#e6e6e6" }}>
       
       <StatusBar barStyle="light-content" />
-        { this.state.loggedInUserId != undefined &&
-         <View style={Platform.OS === "ios" ? styles.iosnotheadingicon : styles.androidnotheadingicon}>
-            <TouchableOpacity onPress={() => Actions.notifications()}>
-                <IconBadge
-                  MainElement={
-                    <Image source={require("../../../../assets/images/notification.png")} style={{width:22,height:24,marginTop:8,marginRight:10}} />
-                  }
-                  BadgeElement={
-                    <Text style={{color:'#FFFFFF',fontSize:10,fontFamily:'ProximaNova-Bold'}}>{this.state.notcount}</Text>
-                  }
-                  IconBadgeStyle={
-                    {width:15,
-                    height:20,
-                    backgroundColor: '#FF0000',borderWidth:2,borderColor:'#008000'}
-                  }
-                  Hidden={this.state.notcount==0}
+          <View style={{marginTop:10,marginLeft:10}}>
+          <Button transparent  onPress={() =>Actions.Home()}>
+              <Icon
+                name="md-arrow-back"
+                style={{ fontSize: deviceHeight/30, color: "#000000" }}
               />
-            </TouchableOpacity>
+          </Button>
         </View>
-        }
-        <View style={Platform.OS === "ios" ? styles.iosnotheading : styles.androidnotheading}> 
-            <Text style={{color:'#ffffff',fontSize:20,fontFamily:'ProximaNova-Bold'}}>My Profile</Text>
-           
-        </View>
-        { this.state.loggedInUserId != undefined &&
-         <Content style={{marginBottom:80}}>
-              <View style={Platform.OS === "ios" ? styles.iosnotimage : styles.androidnotimage}>
-                
-                  { (this.state.profile_pic!="" && this.state.profile_pic!=null) ?
-                  <DstATopComposition 
-                      dstImage={
-                        <Image
-                            style={Platform.OS === "ios" ? styles.myprofileios : styles.myprofileandroid}
-                            resizeMode="contain"
-                            source={{ uri: this.state.profile_pic }}
-                          />
-                      }
-                      srcImage={
-                        <Image
-                          style={Platform.OS === "ios" ? styles.myprofileios : styles.myprofileandroid}
-                          resizeMode="contain"
-                          source={require("../../../../assets/images/heptagon2-01.png")}
-                          
-                        />
-                      }
-                    /> 
-                    :
-                    <DstATopComposition 
-                      
-                      dstImage={
-                        <Image
-                          style={Platform.OS === "ios" ? styles.myprofileios : styles.myprofileandroid}
-                          resizeMode="contain"
-                          source={require("../../../../assets/images/user/screenprofile.png")}
-                        />
-                      }
-                      srcImage={
-                        <Image
-                          style={Platform.OS === "ios" ? styles.myprofileios : styles.myprofileandroid}
-                          resizeMode="contain"
-                          source={require("../../../../assets/images/heptagon2-01.png")}
-                          
-                        />
-                      }
-                    />
-                  }
-
-              </View>
-
-              <View style={Platform.OS === "ios" ? styles.imagebottomios : styles.imagebottomandroid}>
-                  <Text style={{color:'#ffffff',fontSize:30,fontFamily:'ProximaNova-Bold'}}>{this.state.name}, {agedata}</Text>
-                  <Text style={{color:'#ffffff',fontSize:17,opacity:0.9,marginTop:10,fontFamily:'ProximaNova-Regular'}}>Orlando, Florida</Text>
-              </View>
-
-              <View style={Platform.OS === "ios" ? styles.iosmarginHeader : styles.andmarginHeader}>
-                 <View style={{width:deviceWidth-deviceWidth/3.5,justifyContent:'center',alignItems:'center',flexDirection:'row'}}>
-                    <View style={{width:'33%',justifyContent:'center',alignItems:'center'}}>
-                      <TouchableOpacity onPress={() => Actions.editprofile()}>
-                        <Image
-                          source={require("../../../../assets/images/edit.png")}
-                          style={{borderRadius:40,width:deviceHeight/14,height:deviceHeight/14}}
-                        />
-                      </TouchableOpacity>
-                    </View>
-                    <View style={{width:'33%',justifyContent:'center',alignItems:'center'}}>
-                       <TouchableOpacity onPress={() => Actions.settings()}>
-                        <Image
-                          source={require("../../../../assets/images/settings.png")}
-                          style={{borderRadius:40,width:deviceHeight/14,height:deviceHeight/14}}
-                        />
-                      </TouchableOpacity>
-                    </View>
-                    <View style={{width:'33%',justifyContent:'center',alignItems:'center'}}>
-                      <TouchableOpacity onPress={() => this.handleLogOut()}>
-                          <Image
-                            source={require("../../../../assets/images/share.png")}
-                            style={{borderRadius:40,width:deviceHeight/14,height:deviceHeight/14}}
-                          />
-                      </TouchableOpacity>
-                    </View>
-                  </View>
-              </View>
-
-               <View>
-                  <CustomCachedImage
-                        component={CustomImage}
-                        source={{ uri: this.state.profile_pic }} 
-                        style={{ opacity:0 }} />
-                 </View>
-
-        </Content>
-        }
-        { this.state.loggedInUserId != undefined &&
-          <Footer />
-        }
-        {this.state.loggedInUserId == undefined  &&
-          <ScrollView>
-            <View style={{ alignSelf: "center",justifyContent: 'center',marginTop:70}}>
+        <ScrollView>
+            <View style={{ alignSelf: "center",justifyContent: 'center',}}>
                 <Image
-                    source={require("../../../../assets/images/logo.png")}
+                    source={require("../../../../assets/images/fev.png")}
                     style={styles.mainlogo}
                   />
               </View>
-              <View style={{alignSelf: "center",justifyContent: 'center',marginTop:30}}>
-                <Text style={styles.sevenhomeheading}>Please Login or Register to interact</Text>
-                <Text style={styles.sevenhomeheading}>with Real Users</Text>
-              </View>
-              <View style={{ flexDirection:'row',alignSelf: "center",justifyContent: 'center',marginBottom:314}}>
-                  <Button onPress={() => Actions.signIn()} block style={styles.regBtn}>
-                        <Text style={{ color: '#fff', fontSize:19,fontFamily:'ProximaNova-Bold',lineHeight:19}}>Login</Text>
-                  </Button>
-                  <Button onPress={() => Actions.signUp()} block style={[styles.regBtn,{marginLeft:14}]}>
-                        <Text style={{ color: '#fff', fontSize:19,fontFamily:'ProximaNova-Bold',lineHeight:19}}>Register</Text>
-                  </Button>
+                <View style={{marginTop:20,marginLeft:'5%',marginRight:'5%'}}>
+                        <TextInput
+                          placeholder='First Name'
+                          style={{ borderColor:'#d2d2d2', borderWidth:1, backgroundColor:'#fff', color:'#000', height:40,fontSize:16, padding:5,borderRadius:5}}
+                          multiline
+                          placeholderTextColor="#777"
+                          editable={true}
+                          onChange={(event) => this.setState({fname: event.nativeEvent.text})}
+                          value={this.state.title}
+                          
+                        />            
+                </View>
+                <View style={{marginTop:20,marginLeft:'5%',marginRight:'5%'}}>
+                        <TextInput
+                          placeholder='Last name'
+                          style={{ borderColor:'#d2d2d2', borderWidth:1, backgroundColor:'#fff', color:'#000', height:40,fontSize:16, padding:5,borderRadius:5}}
+                          multiline
+                          placeholderTextColor="#777"
+                          editable={true}
+                          onChange={(event) => this.setState({lname: event.nativeEvent.text})}
+                          value={this.state.title}
+                          
+                        />            
+                </View>
+                <View style={{marginTop:20,marginLeft:'5%',marginRight:'5%'}}>
+                        <TextInput
+                          placeholder='Email-Id'
+                          style={{ borderColor:'#d2d2d2', borderWidth:1, backgroundColor:'#fff', color:'#000', height:40,fontSize:16, padding:5,borderRadius:5}}
+                          multiline
+                          placeholderTextColor="#777"
+                          editable={true}
+                          onChange={(event) => this.setState({email: event.nativeEvent.text})}
+                          value={this.state.title}
+                          
+                        />            
+                </View>
+                <View style={{marginTop:20,marginLeft:'5%',marginRight:'5%'}}>
+                        <TextInput
+                          placeholder='Password'
+                          style={{ borderColor:'#d2d2d2', borderWidth:1, backgroundColor:'#fff', color:'#000', height:40,fontSize:16, padding:5,borderRadius:5}}
+                          multiline
+                          placeholderTextColor="#777"
+                          editable={true}
+                          onChange={(event) => this.setState({Password: event.nativeEvent.text})}
+                          value={this.state.title}
+                          
+                        />            
+                </View>
+                <View style={{marginTop:20,marginLeft:'5%',marginRight:'5%'}}>
+                        <TextInput
+                          placeholder='Confirm Password'
+                          style={{ borderColor:'#d2d2d2', borderWidth:1, backgroundColor:'#fff', color:'#000', height:40,fontSize:16, padding:5,borderRadius:5}}
+                          multiline
+                          placeholderTextColor="#777"
+                          editable={true}
+                          onChange={(event) => this.setState({ConfirmPassword: event.nativeEvent.text})}
+                          value={this.state.title}
+                          
+                        />            
+                </View>
+                <View style={{marginTop:20,marginLeft:'5%',marginRight:'5%'}}>
+                        <TextInput
+                          placeholder='Address'
+                          style={{ borderColor:'#d2d2d2', borderWidth:1, backgroundColor:'#fff', color:'#000', height:40,fontSize:16, padding:5,borderRadius:5}}
+                          multiline
+                          placeholderTextColor="#777"
+                          editable={true}
+                          onChange={(event) => this.setState({Address: event.nativeEvent.text})}
+                          value={this.state.title}
+                          
+                        />            
+                </View>
+                <View style={{marginTop:20,marginLeft:'5%',marginRight:'5%'}}>
+                        <TextInput
+                          placeholder='Country'
+                          style={{ borderColor:'#d2d2d2', borderWidth:1, backgroundColor:'#fff', color:'#000', height:40,fontSize:16, padding:5,borderRadius:5}}
+                          multiline
+                          placeholderTextColor="#777"
+                          editable={true}
+                          onChange={(event) => this.setState({Country: event.nativeEvent.text})}
+                          value={this.state.title}
+                          
+                        />            
+                </View>
+                <View style={{marginTop:20,marginLeft:'5%',marginRight:'5%'}}>
+                        <TextInput
+                          placeholder='Mobile number '
+                          style={{ borderColor:'#d2d2d2', borderWidth:1, backgroundColor:'#fff', color:'#000', height:40,fontSize:16, padding:5,borderRadius:5}}
+                          multiline
+                          placeholderTextColor="#777"
+                          editable={true}
+                          onChange={(event) => this.setState({Phone: event.nativeEvent.text})}
+                          value={this.state.title}
+                          
+                        />            
+                </View>
+                <View style={{marginTop:20,marginLeft:'5%',marginRight:'5%',backgroundColor:'#fff'}}>
+                        <RNPickerSelect
+                            placeholder={{label: 'Gender',value: null,color:'#000000'}}
+                            style={pickerSelectStyles}
+                            onValueChange={ (value) => ( this.setState({gender: value}) ) }
+                            items={[
+                              { label: 'Male', value: 'Male' ,color:'#000000'},
+                              { label: 'Female', value: 'Female',color:'#000000' }
+                             
+                          ]}
+                        />          
+                </View>
+                <View style={{marginTop:20,marginLeft:'5%',marginRight:'5%'}}>
+                        <TextInput
+                          placeholder='Date of Birth'
+                          style={{ borderColor:'#d2d2d2', borderWidth:1, backgroundColor:'#fff', color:'#000', height:40,fontSize:16, padding:5,borderRadius:5}}
+                          multiline
+                          placeholderTextColor="#777"
+                          editable={true}
+                          onChange={(event) => this.setState({Birth: event.nativeEvent.text})}
+                          value={this.state.title}
+                          
+                        />            
+                </View>
+                <View style={{marginTop:20,marginLeft:'5%',marginRight:'5%',backgroundColor:'#fff'}}>
+                        <RNPickerSelect
+                            placeholder={{label: 'Height',value: null,color:'#000000'}}
+                            style={pickerSelectStyles}
+                            onValueChange={ (value) => ( this.setState({gender: value}) ) }
+                            items={[
+                              { label: '5ft', value: '5ft' ,color:'#000000'},
+                              { label: '5.2ft', value: '5.2ft',color:'#000000' }
+                             
+                          ]}
+                        />          
+                </View>
+                <View style={{marginTop:20,marginLeft:'5%',marginRight:'5%',backgroundColor:'#fff'}}>
+                        <RNPickerSelect
+                            placeholder={{label: 'Wight',value: null,color:'#000000'}}
+                            style={pickerSelectStyles}
+                            onValueChange={ (value) => ( this.setState({gender: value}) ) }
+                            items={[
+                              { label: '50kg', value: '50kg' ,color:'#000000'},
+                              { label: '60kg', value: '60kg',color:'#000000' },
+                              { label: '70kg', value: '70kg' ,color:'#000000'},
+                              { label: '80kg', value: '80kg',color:'#000000' },
+                              { label: '90kg', value: '90kg' ,color:'#000000'},
+                              { label: '100kg', value: '100kg',color:'#000000' },
+                              { label: '110kg', value: '110kg' ,color:'#000000'},
+                              { label:  '120kg', value: '120kg',color:'#000000' },
+                              { label: '130kg', value: '130kg' ,color:'#000000'},
+                              { label: '140kg', value: '140kg',color:'#000000' },
+                             
+                          ]}
+                        />          
+                </View>
+                <View style={{marginTop:20,marginLeft:'5%',marginRight:'5%'}}>
+                        <TextInput
+                          placeholder='Marital Status'
+                          style={{ borderColor:'#d2d2d2', borderWidth:1, backgroundColor:'#fff', color:'#000', height:40,fontSize:16, padding:5,borderRadius:5}}
+                          multiline
+                          placeholderTextColor="#777"
+                          editable={true}
+                          onChange={(event) => this.setState({Status: event.nativeEvent.text})}
+                          value={this.state.title}
+                          
+                        />            
+                </View>
+                <View style={{marginTop:20,marginLeft:'5%',marginRight:'5%'}}>
+                        <TextInput
+                          placeholder='Religion'
+                          style={{ borderColor:'#d2d2d2', borderWidth:1, backgroundColor:'#fff', color:'#000', height:40,fontSize:16, padding:5,borderRadius:5}}
+                          multiline
+                          placeholderTextColor="#777"
+                          editable={true}
+                          onChange={(event) => this.setState({Religion: event.nativeEvent.text})}
+                          value={this.state.title}
+                          
+                        />            
+                </View>
+                <View style={{marginTop:20,marginLeft:'5%',marginRight:'5%'}}>
+                        <TextInput
+                          placeholder='Caste'
+                          style={{ borderColor:'#d2d2d2', borderWidth:1, backgroundColor:'#fff', color:'#000', height:40,fontSize:16, padding:5,borderRadius:5}}
+                          multiline
+                          placeholderTextColor="#777"
+                          editable={true}
+                          onChange={(event) => this.setState({Caste: event.nativeEvent.text})}
+                          value={this.state.title}
+                          
+                        />            
+                </View>
+                <View style={{marginTop:20,marginLeft:'5%',marginRight:'5%'}}>
+                        <TextInput
+                          placeholder='Education'
+                          style={{ borderColor:'#d2d2d2', borderWidth:1, backgroundColor:'#fff', color:'#000', height:40,fontSize:16, padding:5,borderRadius:5}}
+                          multiline
+                          placeholderTextColor="#777"
+                          editable={true}
+                          onChange={(event) => this.setState({Education: event.nativeEvent.text})}
+                          value={this.state.title}
+                          
+                        />            
+                </View>
+                <View style={{marginTop:20,marginLeft:'5%',marginRight:'5%'}}>
+                        <TextInput
+                          placeholder='Occupation'
+                          style={{ borderColor:'#d2d2d2', borderWidth:1, backgroundColor:'#fff', color:'#000', height:40,fontSize:16, padding:5,borderRadius:5}}
+                          multiline
+                          placeholderTextColor="#777"
+                          editable={true}
+                          onChange={(event) => this.setState({Occupation: event.nativeEvent.text})}
+                          value={this.state.title}
+                          
+                        />            
+                </View>
+                <View style={{marginTop:20,marginLeft:'5%',marginRight:'5%'}}>
+                        <TextInput
+                          placeholder='Annual Income'
+                          style={{ borderColor:'#d2d2d2', borderWidth:1, backgroundColor:'#fff', color:'#000', height:40,fontSize:16, padding:5,borderRadius:5}}
+                          multiline
+                          placeholderTextColor="#777"
+                          editable={true}
+                          onChange={(event) => this.setState({Income: event.nativeEvent.text})}
+                          value={this.state.title}
+                          
+                        />            
+                </View>
+                <View style={{marginLeft:'30%',marginRight:'30%',backgroundColor:'#ed1e79',justifyContent:'center',alignItems:'center',borderRadius:20,margin:'10%'}}>
+                  <TouchableOpacity onPress={() => Actions.signIn()} >
+                        <Text style={{ fontSize:20, fontFamily:'ProximaNova-Bold',  opacity:1, color: "#FFFFFF",padding:'4%'}}>Sign In </Text>
+                  </TouchableOpacity>
               </View>
           </ScrollView>
 
-        }
+        
 
 
       </Container>
     );
   }
 }
+
+const pickerSelectStyles = StyleSheet.create({
+  inputIOS: {
+    fontSize: 16,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    paddingLeft:30,
+    color: '#000000',
+    height:50,
+    opacity:0.7,
+    paddingRight: 30, // to ensure the text is never behind the icon
+  },
+  inputAndroid: {
+    fontSize: 16,
+    paddingHorizontal: 0,
+    marginTop:0,
+    paddingLeft:0,
+    height:40,
+    justifyContent:'center',
+    marginLeft:15,
+    opacity:0.7,
+    color: '#000000',
+    paddingRight: 30, // to ensure the text is never behind the icon
+  },
+});
 
 function bindActions(dispatch) {
   return {

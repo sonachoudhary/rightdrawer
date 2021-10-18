@@ -77,7 +77,7 @@ export const input = props => {
   const { meta, input } = props;
   return (
     <View>
-      <Item style={{backgroundColor:'#313131',borderRadius:30,paddingLeft:10,borderBottomColor:'#313131',borderBottomWidth:0}}>
+      <Item style={{backgroundColor:'#ffffff',borderRadius:30,paddingLeft:10,borderBottomColor:'#313131',borderBottomWidth:0}}>
         {props.type === 'email' &&
           <Image source={require("../../../../assets/images/email.png")} style={{marginTop:1,marginLeft:5,marginRight:5,opacity:0.9}} />
         }
@@ -97,7 +97,7 @@ export const input = props => {
           <PasswordInputText {...input} {...props} inputContainerStyle={{borderBottomWidth:0,height:50}}  style={{ marginTop:-12,color: '#ffffff',borderColor:'#1A1A1A',borderWidth:0,opacity:0.9,width:deviceWidth-100 }} iconColor='#ffffff'  label='' textContentType="oneTimeCode"
           />
         :
-        <Input {...input} {...props} style={{ color: '#ffffff',opacity:0.8,height:48,lineHeight:18,justifyContent:'center',marginTop:0,borderBottomColor:'#313131',borderBottomWidth:0 }}  />
+        <Input {...input} {...props} style={{ color: '#000',opacity:0.8,height:48,lineHeight:18,justifyContent:'center',marginTop:0,borderBottomColor:'#313131',borderBottomWidth:0 }}  />
         }
        
       </Item>
@@ -113,7 +113,7 @@ const pickerSelectStyles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 10,
     paddingLeft:30,
-    color: '#ffffff',
+    color: '#000000',
     height:50,
     opacity:0.7,
     paddingRight: 30, // to ensure the text is never behind the icon
@@ -127,7 +127,7 @@ const pickerSelectStyles = StyleSheet.create({
     justifyContent:'center',
     marginLeft:25,
     opacity:0.7,
-    color: '#ffffff',
+    color: '#000000',
     paddingRight: 30, // to ensure the text is never behind the icon
   },
 });
@@ -217,7 +217,7 @@ class SignUp extends Component {
   render() {
     
     return (
-      <Container style={{ backgroundColor: "#1A1A1A" }}>
+      <Container style={{ backgroundColor: "#e6e6e6" }}>
         <StatusBar barStyle="light-content" />
         <Content  scrollEnabled bounces={false}>
         <View style={{marginTop:40,marginLeft:10}}>
@@ -226,7 +226,7 @@ class SignUp extends Component {
           </TouchableOpacity>
         </View>
         <View style={{width:deviceWidth,justifyContent:'center',alignItems:'center',marginTop:10}}>
-          <Image source={require("../../../../assets/images/logo.png")} style={{width:132,height:150}} />
+          <Image source={require("../../../../assets/images/fev.png")} style={{width:132,height:150}} />
         </View>
 <View style={{ padding: 10,marginTop:15 }}>
             {!this.state.socialLogin && (  
@@ -253,9 +253,9 @@ class SignUp extends Component {
                 </View>
                 
                 <View style={{ paddingHorizontal: 10,paddingVertical:8 }}>
-                  <View style={{backgroundColor:'#313131',borderRadius:30,paddingLeft:10,height:48,borderBottomColor:'#313131',borderBottomWidth:0}}>
+                  <View style={{backgroundColor:'#ffffff',borderRadius:30,paddingLeft:10,height:48,borderBottomColor:'#a2a2a2',borderBottomWidth:0}}>
                       <RNPickerSelect
-                            placeholder={{label: 'Gender',value: null,color:'#888888'}}
+                            placeholder={{label: 'Gender',value: null,color:'#000000'}}
                             style={pickerSelectStyles}
                             onValueChange={ (value) => ( this.setState({gender: value}) ) }
                             items={[
@@ -271,9 +271,9 @@ class SignUp extends Component {
                 </View>
 
                 <View style={{ paddingHorizontal: 10,paddingVertical:8 }}>
-                  <View style={{backgroundColor:'#313131',borderRadius:30,paddingLeft:10,height:48,borderBottomColor:'#313131',borderBottomWidth:0}}>
+                  <View style={{backgroundColor:'#ffffff',borderRadius:30,paddingLeft:10,height:48,borderBottomColor:'#313131',borderBottomWidth:0}}>
                      <DatePicker
-                      style = {{ width:140,textAlign:'left',fontSize: 16,height:48,opacity:0.8,paddingTop:5,color:'#ffffff',paddingBottom:0,paddingLeft:20}}
+                      style = {{ width:140,textAlign:'left',fontSize: 16,height:48,opacity:0.8,paddingTop:5,color:'#000000',paddingBottom:0,paddingLeft:20}}
                       date={this.state.age}
                       mode="date"
                       maxDate={new Date()}
@@ -283,9 +283,9 @@ class SignUp extends Component {
                       confirmBtnText="Confirm"
                       cancelBtnText="Cancel"
                       customStyles={{
-                        dateInput: {  borderWidth: 0,color: "#ffffff",  fontSize: 16,opacity:0.8 },
-                        dateText:{ color: "#ffffff",  fontSize: 16,opacity:0.8},
-                        placeholderText: { fontSize: 16, color: '#ffffff',textAlign:'left',opacity:0.5 }
+                        dateInput: {  borderWidth: 0,color: "#000000",  fontSize: 16,opacity:0.8 },
+                        dateText:{ color: "#000000",  fontSize: 16,opacity:0.8},
+                        placeholderText: { fontSize: 16, color: '#a2a2a2',textAlign:'left',opacity:0.5 }
                       }}
                       onDateChange={time => {
                         this.setState({ age: time });
@@ -350,12 +350,12 @@ class SignUp extends Component {
             )}
 
             <View style={{flexDirection:'row', width:deviceWidth,justifyContent:'center',alignItems:'center', marginTop:20, marginBottom:114,}}>
-              <Text style={{ fontFamily:'ProximaNova-Regular', fontSize:14, opacity:0.8, color: "#ffffff", textAlign: "center",marginRight:2 }}>
+              <Text style={{ fontFamily:'ProximaNova-Regular', fontSize:14, opacity:0.8, color: "#ed1e79", textAlign: "center",marginRight:2 }}>
                  Already have an account?  
                 
               </Text>
-              <TouchableOpacity onPress={() => Actions.signIn()}>
-                    <Text style={{ fontSize:14, fontFamily:'ProximaNova-Bold',  opacity:1, color: "#ffffff", textAlign: "center" }}>Sign In </Text>
+              <TouchableOpacity onPress={() => Actions.Profile()}>
+                    <Text style={{ fontSize:14, fontFamily:'ProximaNova-Bold',  opacity:1, color: "#ed1e79", textAlign: "center" }}>Sign In </Text>
               </TouchableOpacity>
             </View>
             

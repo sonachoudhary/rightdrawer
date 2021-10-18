@@ -97,8 +97,8 @@ myprofileandroid:{
   elevation: 5
 },
 mainlogo: { 
-     width:152,height:160,
-     marginTop:30
+     width:70,height:70,
+     marginTop:10
   },
    sevenhomeheading: {
     textAlign: 'center',

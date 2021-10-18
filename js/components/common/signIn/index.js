@@ -74,7 +74,7 @@ export const input = props => {
   const { meta, input } = props;
   return (
     <View>
-      <Item style={{backgroundColor:'#313131',borderRadius:30,paddingLeft:10,borderBottomColor:'#313131',borderBottomWidth:0}}>
+      <Item style={{backgroundColor:'#ffffff',borderRadius:30,paddingLeft:10,borderBottomColor:'#313131',borderBottomWidth:0}}>
          {props.type === 'email' &&
           <Image source={require("../../../../assets/images/email.png")} style={{marginTop:1,marginLeft:5,marginRight:5,opacity:0.9}} />
         }
@@ -82,10 +82,10 @@ export const input = props => {
           <Image source={require("../../../../assets/images/key.png")} style={{marginTop:2,marginLeft:5,marginRight:10,opacity:0.9}} />
         }
         {props.type === 'password' ?
-          <PasswordInputText {...input} {...props} inputContainerStyle={{borderBottomWidth:0,height:50}}  style={{fontSize:14, marginTop:-11,color: '#ffffff',borderColor:'#1A1A1A',borderWidth:0,opacity:0.9,width:deviceWidth-100 }} iconColor='#ffffff'  label='' textContentType="oneTimeCode"
+          <PasswordInputText {...input} {...props} inputContainerStyle={{borderBottomWidth:0,height:50}}  style={{fontSize:14, marginTop:-7,color: '#ffffff',borderColor:'#1A1A1A',borderWidth:0,opacity:0.9,width:deviceWidth-100 }} iconColor='#ffffff'  label='' textContentType="oneTimeCode"
           />
         :
-        <Input {...input} {...props} style={{ fontSize:14,color: '#ffffff',opacity:0.9,height:48,lineHeight:18,justifyContent:'center',borderBottomColor:'#313131',borderBottomWidth:0 }}  />
+        <Input {...input} {...props} style={{ fontSize:14,color: '#000',opacity:0.9,height:48,lineHeight:18,justifyContent:'center',borderBottomColor:'#313131',borderBottomWidth:0 }}  />
         }
        
       </Item>
@@ -183,11 +183,11 @@ class SignIn extends Component {
   render() {
     
     return (
-      <Container style={{ backgroundColor: "#1A1A1A" }}>
+      <Container style={{ backgroundColor: "#e6e6e6" }}>
         <StatusBar barStyle="light-content" />
         <Content scrollEnabled bounces={false}>
         <View style={{width:deviceWidth,justifyContent:'center',alignItems:'center',marginTop:80,marginBottom:40}}>
-            <Image source={require("../../../../assets/images/logo.png")} style={{width:132,height:150}} />
+            <Image source={require("../../../../assets/images/fev.png")} style={{width:132,height:150,borderRadius:80}} />
 
         </View>
 <View>
@@ -200,7 +200,7 @@ class SignIn extends Component {
                     type="email"
                     name="email"
                     placeholder="Email"
-                    placeholderTextColor={'#808080'}
+                    placeholderTextColor={'#a2a2a2'}
                     keyboardType="email-address"
                     autoCapitalize="none"
                   />
@@ -211,9 +211,10 @@ class SignIn extends Component {
                     placeholder="Password"
                     type="password"
                     secureTextEntry
-                    placeholderTextColor={'#808080'}
+                    placeholderTextColor={'#a2a2a2'}
                     name="password"
                     autoCapitalize="none"
+                    
                   />
                 </View>
               </View>
@@ -225,7 +226,7 @@ class SignIn extends Component {
 
                 <View style={[styles.regBtnContain,{marginTop:81}]}>
                   <View style={{ height: 50,width:218}}>
-                  <Button onPress={this.props.handleSubmit(this.submit.bind(this))} block style={styles.regBtn1}>
+                  <Button onPress={() => Actions.Profile()} block style={styles.regBtn1}>
                     {this.props.isFetching ? (
                       <Spinner />
                     ) : (
@@ -235,24 +236,18 @@ class SignIn extends Component {
                   </View>
                 </View>
 
-                 <View style={[styles.regBtnContain,{marginTop:44}]}>
-                  <View style={{ height: 50,width:218}}>
-                    <Button onPress={() => Actions.profile()} block style={styles.regBtn1}>
-                        <Text style={{ color: '#fff', fontSize:22,fontFamily:'ProximaNova-Bold',lineHeight:26}}>Start Demo</Text>
-                    </Button>
-                  </View>
-                </View>
+                 
                 
               </View>
             )}
           
            <View style={{flexDirection:'row', width:deviceWidth,justifyContent:'center',alignItems:'center', marginTop:20, marginBottom:114,}}>
-            <Text style={{ fontFamily:'ProximaNova-Regular', fontSize:14, opacity:0.8, color: "#ffffff", textAlign: "center",marginRight:2 }}>
+            <Text style={{ fontFamily:'ProximaNova-Regular', fontSize:14, opacity:0.8, color: "#ed1e79", textAlign: "center",marginRight:2 }}>
               Don't have an account? 
               
             </Text>
             <TouchableOpacity onPress={() => Actions.signUp()}>
-                  <Text style={{ fontSize:14, fontFamily:'ProximaNova-Bold',  opacity:1, color: "#ffffff", textAlign: "center" }}>Sign Up </Text>
+                  <Text style={{ fontSize:14, fontFamily:'ProximaNova-Bold',  opacity:1, color: "#ed1e79", textAlign: "center" }}>Sign Up </Text>
             </TouchableOpacity>
             </View>
               {this.state.showError &&

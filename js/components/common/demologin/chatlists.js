@@ -216,7 +216,7 @@ class Chatlists extends Component {
               </View>
                <View style={{ flexDirection:'row', marginTop:30, marginBottom:15}}> 
                   <Image
-                    source={require("../../../../assets/sevenicon/chatuser2.png")}
+                    source={require("../../../../assets/sevenicon/profilepic.png")}
                     style={{marginLeft:20}}
                   />
                   <Text style={styles.headtitle}>Anthony Chavez{"\n"} <Text style={styles.subheadtitle}>Nisi ipsum</Text></Text>
@@ -242,7 +242,7 @@ class Chatlists extends Component {
 
               <View style={{ flexDirection:'row', marginTop:30, marginBottom:15}}> 
                   <Image
-                    source={require("../../../../assets/sevenicon/chatuser2.png")}
+                    source={require("../../../../assets/sevenicon/profilepic.png")}
                     style={{marginLeft:20}}
                   />
                   <Text style={styles.headtitle}>Vincent Palmer{"\n"} <Text style={styles.subheadtitle}>Eget etiam</Text></Text>

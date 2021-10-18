@@ -43,9 +43,8 @@ export default {
   },
   regBtn1: {
     borderRadius: 30,
-    borderColor:'#F54462',
-    borderWidth:3,
-    backgroundColor:'#1A1A1A',
+    
+    backgroundColor:'#ed1e79',
     height:50
   },
   googleLeft: {

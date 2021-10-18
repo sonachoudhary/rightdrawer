@@ -38,9 +38,8 @@ export default {
     height: 54,
     
     borderRadius: 30,
-    borderColor:'#F54462',
-    borderWidth:3,
-    backgroundColor:'#1A1A1A',
+   
+    backgroundColor:'#ed1e79',
     
 
   },
@@ -48,9 +47,8 @@ export default {
     height: 48,
     width:222,
     borderRadius: 30,
-    borderColor:'#F54462',
-    borderWidth:3,
-    backgroundColor:'#1A1A1A',
+    
+    backgroundColor:'#ed1e79',
     marginLeft: '20%',
 
   },

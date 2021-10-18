@@ -148,15 +148,15 @@ class Preferencelist extends Component {
         clearInterval(this.timer);
         Actions.match();
       }
-    }, 1000);
+    }, 10);
   }
 
   async openother(){
       await AsyncStorage.setItem('touropen', "0");
       var that = this;
       this.setState({preferencemodalVisible:false});
-      setTimeout(function(){ that.setState({preferencepicmodalVisible:true});},500);
-      setTimeout(function(){ that.setState({preferencepicmodalVisible:false});},5000);
+      setTimeout(function(){ that.setState({preferencepicmodalVisible:true});},50);
+      setTimeout(function(){ that.setState({preferencepicmodalVisible:false});},50);
       
    }  
 

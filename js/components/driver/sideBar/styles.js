@@ -7,15 +7,13 @@ export default {
     paddingTop: 10,
     paddingBottom: 10,
     marginLeft: 0,
-    borderBottomWidth: 1,
-    borderBottomColor: '#245071'
+    
   },
   alinks: {
     paddingTop: 10,
     paddingBottom: 10,
     marginLeft: 0,
-    borderBottomWidth: 1,
-    borderBottomColor: '#245071'
+    
   },
   iosAboutlink: {
     paddingTop: 10,
@@ -33,8 +31,8 @@ export default {
   },
   linkText: {
     paddingLeft: 10,
-    color: '#000',
-    fontSize: 16,
+    color: '#FFF',
+    fontSize: 18,
     fontWeight: '500'
   },
   logoutContainer: {
@@ -54,7 +52,7 @@ export default {
   },
   drawerContent: {
     paddingTop: 30,
-    backgroundColor: '#FFF',
+    backgroundColor: '#ed1e79',
      height: deviceHeight -10
   },
   Bg: {
@@ -63,7 +61,7 @@ export default {
   },
   adrawerContent: {
     paddingTop: 20,
-    backgroundColor: '#FFF',
+    backgroundColor: '#ed1e79',
     height: deviceHeight -10
   },
   aProfilePic: {

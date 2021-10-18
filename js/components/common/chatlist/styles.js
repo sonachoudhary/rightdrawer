@@ -114,12 +114,12 @@ myprofileandroid:{
     backgroundColor:"#1A1A1A"
   },
   listcustom: {
-    borderColor:'#1A1A1A',
+    borderColor:'#ffffff',
     borderWidth: 0,
     marginLeft: 0,
     marginTop:30,
     paddingLeft: 10,
-    backgroundColor: '#1A1A1A'
+    backgroundColor: '#ffffff'
   },
   listContainer: {
     flexDirection: 'row',
@@ -133,7 +133,7 @@ myprofileandroid:{
     marginTop:5
   },
   textColor: {
-    color: '#FFFFFF',
+    color: '#ed1e79',
     alignSelf: 'flex-start',
     fontFamily:'ProximaNova-Bold',
     fontSize:16,
@@ -141,7 +141,7 @@ myprofileandroid:{
     textTransform: 'capitalize'
   },
   msgTextColor: {
-    color: '#ffffff',
+    color: '#ed1e79',
     opacity:0.6,
     alignSelf: 'flex-start',
     fontFamily:'ProximaNova-Regular',
