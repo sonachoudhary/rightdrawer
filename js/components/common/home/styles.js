@@ -183,7 +183,6 @@ container: {
     shadowOpacity: 0.8,
     shadowRadius: 1,
     backgroundColor:'#fff',
-    marginBottom:40,
   },
 
    textheading:{
@@ -199,13 +198,19 @@ color:"#f7b5b7", fontSize:18, marginTop:10 ,fontWeight:'400',marginLeft:10,textA
     padding:'2%'
   },
   lefttext1:{
-    color:'#ffffff',
+    color:'#ed1e79',
     fontSize:21,padding:'2%'
   },
   righttext1:{
     color:'#000',
     fontSize:21,
     padding:'2%'
+  },
+  mainmenu:{
+    justifyContent:'space-between',alignItems:'center',marginRight:'5%',marginTop:'5%',flexDirection:'row',marginLeft:'5%'
+  },
+  text:{
+    justifyContent:'center',alignItems:'center',flex:1
   }
 
 };

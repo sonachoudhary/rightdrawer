@@ -44,7 +44,7 @@ import { changePageStatus, currentLocationUser, signInUser } from '../../../acti
 import { fetchUserCurrentLocationAsync, syncDataAsync, mapDeviceIdToUser,getpooldata } from '../../../actions/driver/home';
 import OneSignal from "react-native-onesignal";
 import config from "../../../../config";
-import Footer from "../footer";
+
 import Modal from "react-native-modal";
 import Contacts from 'react-native-contacts';
 

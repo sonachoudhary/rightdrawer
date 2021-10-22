@@ -28,7 +28,6 @@ import * as appStateSelector from "../../../reducers/driver/appState";
 import { logOutUserAsync } from "../../../actions/common/signin";
 
 
-import Footer from "../footer";
 
 import styles from "./styles";
 import _ from "lodash";
@@ -137,7 +136,7 @@ class Myprofile extends Component {
       
       <StatusBar barStyle="light-content" />
           <View style={{marginTop:10,marginLeft:10}}>
-          <Button transparent  onPress={() =>Actions.Home()}>
+          <Button transparent onPress={() => this.props.navigation.openDrawer()}>
               <Icon
                 name="md-arrow-back"
                 style={{ fontSize: deviceHeight/30, color: "#000000" }}

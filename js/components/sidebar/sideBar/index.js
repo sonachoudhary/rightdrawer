@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Platform, Dimensions,ScrollView,Image,TouchableOpacity ,ImageBackground,Share,Linking} from "react-native";
+import { Platform, Dimensions,ScrollView,Image,TouchableOpacity ,ImageBackground,Share,Linking,TextInput} from "react-native";
 import _ from "lodash";
 
 
@@ -16,7 +16,7 @@ import {
   Item,
   List,
   ListItem,
-  Left
+  Left,Button
 } from "native-base";
 import { Actions, ActionConst } from "react-native-router-flux";
 
@@ -27,8 +27,8 @@ import styles from "./styles";
 import commonColor from "../../../../native-base-theme/variables/commonColor";
 import { getMonthEarning, getTearms, getPrivacy, getNotificationList, getNearbyBarber, getNearbyCustomer, getBarberList } from "../../../actions/common/booking";
 
-const deviceHeight = Dimensions.get("window").height;
-
+const deviceWidth = Dimensions.get('window').width; 
+const deviceHeight = Dimensions.get('window').height; 
 function mapStateToProps(state) {
   return {
     fname: state.driver.user.fname,
@@ -51,7 +51,9 @@ class SideBar extends Component {
     super(props);
     this.state = {
       image: null,
-      userType: this.props.userType
+      userType: this.props.userType,
+      isopen:false,
+      isopen2:false
     };
   }
 
@@ -118,6 +120,28 @@ class SideBar extends Component {
     }
   };
 
+
+opendropdown=()=>{
+   this.setState({isopen:true})
+   if(this.state.isopen==true){
+    this.setState({isopen:false})
+   }else{
+    this.setState({isopen:true})
+   }
+
+}
+opendropdown2=()=>{
+   this.setState({isopen2:true})
+   if(this.state.isopen2==true){
+    this.setState({isopen2:false})
+   }else{
+    this.setState({isopen2:true})
+   }
+
+}
+closedropdown=()=>{
+  this.setState({isopen:false})
+}
   render() {
      
     var userType = this.state.userType;
@@ -138,7 +162,56 @@ class SideBar extends Component {
               : styles.drawerContent
           }
         >
-         
+            
+
+            <Card
+            style={{
+              
+            }}
+          >
+
+            <CardItem
+              style={{
+               
+                
+              }}
+            >
+              <Item
+                style={{
+                  
+                  
+                }}
+                onPress={() => {
+
+                  Actions.profile();
+                  this.props.closeDrawer();
+                }}
+              >
+               
+                <View style={{ flexDirection:'row', marginLeft:10,marginTop:20,marginRight:10}} >
+                        <TextInput
+                          placeholder='Search'
+                          style={{ borderColor:'#e2e2e2', borderWidth:1,  color:'#000', height:40, width:deviceWidth/1.7, fontSize:16, padding:5,borderRadius:5}}
+                          multiline
+                          placeholderTextColor="#777"
+                          editable={true}
+                           onChange={(event) => this.setState({item: event.nativeEvent.text})}
+                           value={this.state.title}
+                          
+                        />            
+                     </View>
+                 
+                 
+                  
+              </Item>
+            
+           
+             
+           
+
+            
+            </CardItem>
+          </Card>
           <List foregroundColor={"white"} style={[styles.Bg],{marginTop:20, }}>
             
 
@@ -149,32 +222,48 @@ class SideBar extends Component {
               button
               onPress={() => {
                 this.props.closeDrawer();
-                Actions.Myprofile();
+                Actions.Home();
               }}
               iconLeft
               style={Platform.OS === "android" ? styles.alinks : styles.links}
             >
               <Left>
                 
-            <Text style={styles.linkText}> My Profile</Text>
+            <Text style={styles.linkText}> Home</Text>
               </Left>
             </ListItem>
           
-
              <ListItem
               button
               onPress={() => {
-                  this.props.closeDrawer();
-                   Actions.Plan();
+                  this.opendropdown();
                 }}
               iconLeft
               style={Platform.OS === "android" ? styles.alinks : styles.links}
             >
               <Left>
                
-                <Text style={styles.linkText}>Plan </Text>
+                <Text style={styles.linkText}>Services </Text>
+                <Button transparent onPress={() =>this.opendropdown()} style={{position:'absolute',right:0,marginTop:-5}}>
+                      <Image                      
+                       source={require("../../../../assets/images/arrow-down.png")}
+                      style={{ width:30,height:30,}}
+                      /> 
+                                                   
+                    </Button>
               </Left>
             </ListItem>
+            {this.state.isopen &&
+              <View style={{marginLeft:'3%'}}>
+                <Text style={styles.linkText}>Services </Text>
+                <Text style={styles.linkText}>Services </Text>
+                <Text style={styles.linkText}>Services </Text>
+                <Text style={styles.linkText}>Services </Text>
+                <Text style={styles.linkText}>Services </Text>
+                <Text style={styles.linkText}>Services </Text>
+              </View>
+          }
+
              <ListItem
               button
               onPress={() => {
@@ -186,35 +275,38 @@ class SideBar extends Component {
             >
               <Left>
                
-                <Text style={styles.linkText}>Privacy & Policy </Text>
-              </Left>
-            </ListItem>
-             <ListItem
-              button
-              onPress={() => {
-                  this.props.closeDrawer();
-                   Actions.SuccessStory();
-                }}
-              iconLeft
-              style={Platform.OS === "android" ? styles.alinks : styles.links}
-            >
-              <Left>
-               
                 <Text style={styles.linkText}>Success Story </Text>
+                 <Button transparent onPress={() =>this.opendropdown2()} style={{position:'absolute',right:0}}>
+                      <Image                      
+                       source={require("../../../../assets/images/arrow-down.png")}
+                      style={{ width:30,height:30,}}
+                      /> 
+                                                   
+                    </Button>
               </Left>
             </ListItem>
+            {this.state.isopen2 &&
+              <View style={{marginLeft:'3%'}}>
+                <Text style={styles.linkText}>Story </Text>
+                <Text style={styles.linkText}>Story </Text>
+                <Text style={styles.linkText}>Story </Text>
+                <Text style={styles.linkText}>Story </Text>
+                <Text style={styles.linkText}>Story </Text>
+                <Text style={styles.linkText}>Story </Text>
+              </View>
+          }
              <ListItem
               button
               onPress={() => {
                   this.props.closeDrawer();
-                   Actions.Chatlist();
+                   this.privacypolicy();
                 }}
               iconLeft
               style={Platform.OS === "android" ? styles.alinks : styles.links}
             >
               <Left>
                
-                <Text style={styles.linkText}>Chat </Text>
+                <Text style={styles.linkText}>Contact </Text>
               </Left>
             </ListItem>
              <ListItem

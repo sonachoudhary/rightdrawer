@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import {Drawer} from "native-base";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import SideBar from "./components/driver/sideBar";
+import SideBar from "./components/sidebar/sideBar";
 import { closeDrawer } from "./actions/drawer";
 
 class NavigationDrawer extends Component {

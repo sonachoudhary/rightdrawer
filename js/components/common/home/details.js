@@ -44,7 +44,6 @@ import { changePageStatus, currentLocationUser, signInUser } from '../../../acti
 import { fetchUserCurrentLocationAsync, syncDataAsync, mapDeviceIdToUser,getpooldata } from '../../../actions/driver/home';
 import OneSignal from "react-native-onesignal";
 import config from "../../../../config";
-import Footer from "../footer";
 import Modal from "react-native-modal";
 import Contacts from 'react-native-contacts';
 
@@ -109,8 +108,6 @@ class Details extends Component {
       isopen2:false,
       isopen3:false,
       isopen4:false,
-      isopen5:false,
-      isopen6:false,
     };
     
   }
@@ -128,9 +125,6 @@ class Details extends Component {
     isopen1:false,
     isopen2:false,
     isopen3:false,
-    isopen4:false,
-    isopen5:false,
-    isopen6:false,
   })
  }
  showdata1=()=>{
@@ -139,9 +133,6 @@ class Details extends Component {
     isopen:false,
     isopen2:false,
     isopen3:false,
-    isopen4:false,
-    isopen5:false,
-    isopen6:false,
   })
  }
  showdata2=()=>{
@@ -150,9 +141,6 @@ class Details extends Component {
     isopen:false,
     isopen1:false,
     isopen3:false,
-    isopen4:false,
-    isopen5:false,
-    isopen6:false,
   })
  }
  showdata3=()=>{
@@ -161,42 +149,6 @@ class Details extends Component {
     isopen:false,
     isopen2:false,
     isopen3:true,
-    isopen4:false,
-    isopen5:false,
-    isopen6:false,
-  })
- }
- showdata4=()=>{
-  this.setState({
-    isopen1:false,
-    isopen:false,
-    isopen2:false,
-    isopen3:false,
-    isopen4:true,
-    isopen5:false,
-    isopen6:false,
-  })
- }
- showdata5=()=>{
-  this.setState({
-    isopen4:false,
-    isopen5:true,
-    isopen1:false,
-    isopen:false,
-    isopen2:false,
-    isopen3:false,
-    isopen6:false,
-  })
- }
- showdata6=()=>{
-  this.setState({
-    isopen4:false,
-    isopen5:false,
-    isopen1:false,
-    isopen:false,
-    isopen2:false,
-    isopen3:false,
-    isopen6:true,
   })
  }
   renderdata=({item,index})=>{
@@ -205,7 +157,7 @@ class Details extends Component {
        <View style={styles.box}>
        <View style={{justifyContent:'center',alignItems:'center',}}>
                    <Image                      
-                       source={require("../../../../assets/images/profilepic.png")}
+                       source={require("../../../../assets/images/chatuser2.png")}
                       style={{ width:deviceWidth/4, height: 100,paddingLeft:20}}
                       />
         </View>
@@ -245,23 +197,23 @@ class Details extends Component {
    
     
     return (
-      <Container style={{ backgroundColor: "#ed1e79" }}>
-      <StatusBar barStyle="light-content"  backgroundColor="#ed1e79"/>
-         
-                  <Button transparent onPress={() =>Actions.Home()} style={{padding:'1%',backgroundColor:'#ed1e79',}}>
+      <Container style={{ backgroundColor: "#fff" }}>
+      <StatusBar barStyle="light-content" />
+         <View style={{marginTop:10,justifyContent:'center',alignItems:'center'}}>
+                   <Button transparent onPress={() =>this.props.navigation.openDrawer()}>
                       <Icon
                         name="md-arrow-back"
-                        style={{ fontSize: deviceHeight/25, color: "#ffffff" }}
+                        style={{ fontSize: 28, color: "#000000" }}
                       />
-                        <Text style={{color:'#ffffff',fontSize:deviceHeight/30,paddingLeft:'30%',padding:'5%'}}> Details </Text>                            
+                        <Text style={{color:'#000',fontSize:deviceHeight/40,textAlign:'center'}}> Details </Text>                            
                     </Button>
-              
+              </View>
               <ScrollView style={{marginBottom:'10%'}}>
        <View>
-         <Image                      
-           source={require("../../../../assets/images/profilepic.png")}
-          style={{ width:deviceWidth, height: deviceHeight/2,paddingLeft:20,margin:'3%'}}
-          /> 
+               <Image                      
+                       source={require("../../../../assets/images/chatuser2.png")}
+                      style={{ width:deviceWidth, height: deviceHeight/2,paddingLeft:20,margin:'3%'}}
+                      /> 
        </View>
        <View style={{justifyContent:'center',alignItems:'center'}}>
        <View style={{flexDirection:'row',justifyContent:'space-between',width:deviceWidth/1.7}}>
@@ -285,14 +237,14 @@ class Details extends Component {
         </View>  
         <View style={{flexDirection:'row',justifyContent:'space-evenly',margin:'2%'}}>
            <TouchableOpacity style={{
-                                 borderColor:'#ffffff',borderWidth:1,
+                                 backgroundColor:'#ed1e79',
                                  justifyContent:'center',
                                  alignItems:'center',borderRadius:10
                                }} onPress={()=>this.showdata()}>
                <Text style={{color:'#fff',padding:'3%'}}>Basic Informations</Text>
            </TouchableOpacity>
            <TouchableOpacity style={{
-                                 borderColor:'#ffffff',borderWidth:1,
+                                 backgroundColor:'#ed1e79',
                                  justifyContent:'center',
                                  alignItems:'center',borderRadius:10
                                }} onPress={()=>this.showdata1()}>
@@ -302,7 +254,7 @@ class Details extends Component {
         { this.state.isopen==true &&
             <View style={{
                                  backgroundColor:'#ffff',borderWidth:1,borderColor:'#ed1e79',
-                                 justifyContent:'center',paddingLeft:'5%',
+                                 justifyContent:'center',
                                  alignItems:'center',borderRadius:10,paddingTop:'10%',marginLeft:'5%',marginRight:'5%',
                                }}>
                                
@@ -345,7 +297,7 @@ class Details extends Component {
           { this.state.isopen1==true &&
             <View style={{
                                  backgroundColor:'#ffff',borderWidth:1,borderColor:'#ed1e79',
-                                 justifyContent:'center',paddingLeft:'5%',
+                                 justifyContent:'center',
                                  alignItems:'center',borderRadius:10,paddingTop:'10%',marginLeft:'5%',marginRight:'5%',
                                }}>
                                
@@ -387,14 +339,14 @@ class Details extends Component {
           }
         <View style={{flexDirection:'row',justifyContent:'space-evenly',margin:'2%'}}>
            <TouchableOpacity style={{
-                                 borderColor:'#ffffff',borderWidth:1,
+                                 backgroundColor:'#ed1e79',
                                  justifyContent:'center',
                                  alignItems:'center',borderRadius:10
                                }} onPress={()=>this.showdata2()}>
                <Text style={{color:'#fff',padding:'3%'}}>Education and Professional Information</Text>
            </TouchableOpacity>
            <TouchableOpacity style={{
-                                 borderColor:'#ffffff',borderWidth:1,
+                                 backgroundColor:'#ed1e79',
                                  justifyContent:'center',
                                  alignItems:'center',borderRadius:10
                                }} onPress={()=>this.showdata3()}>
@@ -404,7 +356,7 @@ class Details extends Component {
         { this.state.isopen2==true &&
             <View style={{
                                  backgroundColor:'#ffff',borderWidth:1,borderColor:'#ed1e79',
-                                 justifyContent:'center',paddingLeft:'5%',
+                                 justifyContent:'center',
                                  alignItems:'center',borderRadius:10,paddingTop:'10%',marginLeft:'5%',marginRight:'5%',
                                }}>
                                
@@ -431,7 +383,7 @@ class Details extends Component {
           { this.state.isopen3==true &&
             <View style={{
                                  backgroundColor:'#ffff',borderWidth:1,borderColor:'#ed1e79',
-                                 justifyContent:'center',paddingLeft:'5%',
+                                 justifyContent:'center',
                                  alignItems:'center',borderRadius:10,paddingTop:'10%',marginLeft:'5%',marginRight:'5%',
                                }}>
                                
@@ -450,192 +402,22 @@ class Details extends Component {
           }
         <View style={{flexDirection:'row',justifyContent:'space-evenly',margin:'2%'}}>
            <TouchableOpacity style={{
-                                 borderColor:'#ffffff',borderWidth:1,
+                                 backgroundColor:'#ed1e79',
                                  justifyContent:'center',
                                  alignItems:'center',borderRadius:10
-                               }} onPress={()=>this.showdata4()}>
+                               }} onPress={()=>this.showdata()}>
                <Text style={{color:'#fff',padding:'3%'}}>Family Details</Text>
            </TouchableOpacity>
            <TouchableOpacity style={{
-                                 borderColor:'#ffffff',borderWidth:1,
+                                 backgroundColor:'#ed1e79',
                                  justifyContent:'center',
                                  alignItems:'center',borderRadius:10
-                               }} onPress={()=>this.showdata5()}>
+                               }} onPress={()=>this.showdata()}>
                <Text style={{color:'#fff',padding:'3%'}}>Contact Details</Text>
            </TouchableOpacity>
         </View> 
-        { this.state.isopen4==true &&
-            <View style={{
-                                 backgroundColor:'#ffff',borderWidth:1,borderColor:'#ed1e79',
-                                 justifyContent:'center',paddingLeft:'5%',
-                                 alignItems:'center',borderRadius:10,paddingTop:'10%',marginLeft:'5%',marginRight:'5%',
-                               }}>
-                               
-                               <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',margin:'2%'}}> 
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Family Values:</Text>
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Not Available</Text>
-                               </View>
-                               <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',margin:'2%'}}> 
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Family Type:</Text>
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Not Available</Text>
-                               </View>
-                               <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',margin:'2%'}}> 
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Father's Name:</Text>
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Not Available</Text>
-                               </View>
-                               <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',margin:'2%'}}> 
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Father's Occupation:</Text>
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Not Available</Text>
-                               </View>
-                               <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',margin:'2%'}}> 
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Mother's Name:</Text>
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Not Available</Text>
-                               </View>
-                               <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',margin:'2%'}}> 
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Mother's Occupation:</Text>
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Not Available</Text>
-                               </View>
-                               <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',margin:'2%'}}> 
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Family Status:</Text>
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Not Available</Text>
-                               </View>
-                               <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',margin:'2%'}}> 
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Ancestral Origin Total Brothers:</Text>
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Not Available</Text>
-                               </View>
-                                <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',margin:'2%'}}> 
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Married Brothers:</Text>
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Not Available</Text>
-                               </View>
-                                <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',margin:'2%'}}> 
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Total Sisters:</Text>
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Not Available</Text>
-                               </View>
-                               <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',margin:'2%'}}> 
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Married Sisters:</Text>
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Not Available</Text>
-                               </View>
-                               
-           </View>
-           
-          }
-          { this.state.isopen5==true &&
-            <View style={{
-                                 backgroundColor:'#ffff',borderWidth:1,borderColor:'#ed1e79',
-                                 justifyContent:'center',paddingLeft:'5%',
-                                 alignItems:'center',borderRadius:10,paddingTop:'10%',marginLeft:'5%',marginRight:'5%',
-                               }}>
-                               
-                               <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',margin:'2%'}}> 
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Address:</Text>
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>mohali</Text>
-                               </View>
-                               <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',margin:'2%'}}> 
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Country:</Text>
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>India</Text>
-                               </View>
-                               <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',margin:'2%'}}> 
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>State:</Text>
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>mohali</Text>
-                               </View>
-                               <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',margin:'2%'}}> 
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Residing State:</Text>
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>India</Text>
-                               </View>
-                               <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',margin:'2%'}}> 
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Parent's Contact:</Text>
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>**********</Text>
-                               </View>
-                               <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',margin:'2%'}}> 
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Mobile:</Text>
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>97635426***</Text>
-                               </View>
-                               <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',margin:'2%'}}> 
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Time to call:</Text>
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>1:10</Text>
-                               </View>
-                               <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',margin:'2%'}}> 
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Email:</Text>
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Example@yopmail.com</Text>
-                               </View>
-                               
-               
-           </View>
-           
-          }
          
-           <View style={{flexDirection:'row',justifyContent:'space-evenly',margin:'2%'}}>
-           <TouchableOpacity style={{
-                                 borderColor:'#ffffff',borderWidth:1,
-                                 justifyContent:'center',
-                                 alignItems:'center',borderRadius:10
-                               }} onPress={()=>this.showdata6()}>
-               <Text style={{color:'#fff',padding:'3%'}}>Partner Expectations</Text>
-           </TouchableOpacity>
            
-        </View> 
-
-         { this.state.isopen6==true &&
-            <View style={{
-                                 backgroundColor:'#ffff',borderWidth:1,borderColor:'#ed1e79',
-                                
-                                 borderRadius:10,paddingTop:'10%',marginLeft:'5%',marginRight:'5%',justifyContent:'center',paddingLeft:'5%',
-                                 alignItems:'center',
-                               }}>
-                               
-                               <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',margin:'2%'}}> 
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Age Preference:</Text>
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>23 to 26</Text>
-                               </View>
-                               <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',margin:'2%'}}> 
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Height Between:</Text>
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>5ft 2in to 5ft 5in</Text>
-                               </View>
-                               <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',margin:'2%'}}> 
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Martial Status:</Text>
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Unmarried</Text>
-                               </View>
-                               <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',margin:'2%'}}> 
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Have Children:</Text>
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>No</Text>
-                               </View>
-                               <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',margin:'2%'}}> 
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Mother Tongue:</Text>
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Chhattisgarhi, Hindi</Text>
-                               </View>
-                               <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',margin:'2%'}}> 
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Religion:</Text>
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Hindu</Text>
-                               </View>
-                               <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',margin:'2%'}}> 
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Caste:</Text>
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>satnami</Text>
-                               </View>
-                               <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',margin:'2%'}}> 
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Education:</Text>
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Any, B.A, B.Com</Text>
-                               </View>
-                               <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',margin:'2%'}}> 
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Country Living in:</Text>
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>India</Text>
-                               </View>
-                               <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',margin:'2%'}}> 
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Complexion:</Text>
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>satnami</Text>
-                               </View>
-                               <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',margin:'2%'}}> 
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Income:</Text>
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Not Available</Text>
-                               </View>
-                               <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',margin:'2%'}}> 
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Resident Status:</Text>
-                                  <Text style={{color:'#ed1e79',width:'50%'}}>Not Available</Text>
-                               </View>
-                               
-               
-           </View>
-           
-          }
        </ScrollView>
       </Container>
     );

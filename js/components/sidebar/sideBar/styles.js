@@ -31,7 +31,7 @@ export default {
   },
   linkText: {
     paddingLeft: 10,
-    color: '#FFF',
+    color: '#000',
     fontSize: 18,
     fontWeight: '500'
   },
@@ -52,7 +52,7 @@ export default {
   },
   drawerContent: {
     paddingTop: 30,
-    backgroundColor: '#ed1e79',
+    backgroundColor: '#fff',
      height: deviceHeight -10
   },
   Bg: {
@@ -61,7 +61,7 @@ export default {
   },
   adrawerContent: {
     paddingTop: 20,
-    backgroundColor: '#ed1e79',
+    backgroundColor: '#fff',
     height: deviceHeight -10
   },
   aProfilePic: {

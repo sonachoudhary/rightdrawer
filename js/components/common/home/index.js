@@ -44,7 +44,6 @@ import { changePageStatus, currentLocationUser, signInUser } from '../../../acti
 import { fetchUserCurrentLocationAsync, syncDataAsync, mapDeviceIdToUser,getpooldata } from '../../../actions/driver/home';
 import OneSignal from "react-native-onesignal";
 import config from "../../../../config";
-import Footer from "../footer";
 import Modal from "react-native-modal";
 import Contacts from 'react-native-contacts';
 
@@ -65,16 +64,7 @@ function mapStateToProps(state) {
   };
   console.log('state.driver.appState',state.app);
   return {
-    loadingStatus: state.driver.appState.loadingStatus,
-    isLoggedIn: state.driver.appState.isLoggedIn,
-    loginError: state.driver.appState.loginError,
-    errormsg: appStateSelector.getErrormsg(state),
-    isFetching: appStateSelector.isFetching(state),
-    setgenderchoice:state.driver.user.setgenderchoice,
-    userDetail: state.driver.user,
-    gender: state.driver.user.gender,
-    uuid : state.app&&state.app.uuid,
-    user_id: state.driver?.user?._id
+   
   };
 }
 
@@ -94,16 +84,7 @@ class Home extends Component {
     
 
     this.state = {
-      dataitem:[
-      {Name:'Harrish',Membership:'Paid',Age:'25',Locations:'Janjgir',Educations:'master',Occupation:'Developer',Status:'Unmarried',Regligion:'Hindu',},
-      {Name:'Harrish',Membership:'Paid',Age:'25',Locations:'Janjgir',Educations:'master',Occupation:'Developer',Status:'Unmarried',Regligion:'Hindu',},
-      {Name:'Harrish',Membership:'Paid',Age:'25',Locations:'Janjgir',Educations:'master',Occupation:'Developer',Status:'Unmarried',Regligion:'Hindu',},
-      {Name:'Harrish',Membership:'Paid',Age:'25',Locations:'Janjgir',Educations:'master',Occupation:'Developer',Status:'Unmarried',Regligion:'Hindu',},
-      {Name:'Harrish',Membership:'Paid',Age:'25',Locations:'Janjgir',Educations:'master',Occupation:'Developer',Status:'Unmarried',Regligion:'Hindu',},
-      {Name:'Harrish',Membership:'Paid',Age:'25',Locations:'Janjgir',Educations:'master',Occupation:'Developer',Status:'Unmarried',Regligion:'Hindu',},
-      {Name:'Harrish',Membership:'Paid',Age:'25',Locations:'Janjgir',Educations:'master',Occupation:'Developer',Status:'Unmarried',Regligion:'Hindu',}
-
-      ]
+     
     };
     
   }
@@ -114,77 +95,31 @@ class Home extends Component {
    
   }
  
-  renderdata=({item,index})=>{
-    return(
-      <View style={styles.boxmain}>
-       <View style={styles.box}>
-       <View style={{justifyContent:'center',alignItems:'center',}}>
-                   <Image                      
-                       source={require("../../../../assets/images/profilepic.png")}
-                      style={{ width:deviceWidth/4, height: 100,paddingLeft:20}}
-                      />
-        </View>
-          <View style={{flexDirection:'row',justifyContent:'space-between',width:deviceWidth/1.7}}>
-            <View>
-           <Text style={styles.lefttext}> Name:</Text>
-           <Text style={styles.lefttext}> Membership:</Text>
-           <Text style={styles.lefttext}> Age:</Text>
-           <Text style={styles.lefttext}> Locations:</Text>
-           <Text style={styles.lefttext}> Educations:</Text>
-           <Text style={styles.lefttext}> Occupation:</Text>
-           <Text style={styles.lefttext}> Married Status:</Text>
-           <Text style={styles.lefttext}> Regligion/Cast:</Text>
-           </View>
-           <View>
-           
-           <Text style={styles.righttext}> Name{item.Name}</Text>
-           <Text style={styles.righttext}> Name{item.Membership}</Text>
-           <Text style={styles.righttext}> Name{item.Age}</Text>
-           <Text style={styles.righttext}> Name{item.Locations}</Text>
-           <Text style={styles.righttext}> Name{item.Educations}</Text>
-           <Text style={styles.righttext}> Name{item.Occupation}</Text>
-           <Text style={styles.righttext}> Name{item.Status}</Text>
-           <Text style={styles.righttext}> Name{item.Regligion}</Text>
-           </View>
-           </View>
-           
-       </View>
-       <TouchableOpacity style={{margin:'1%',
-                                 backgroundColor:'#ed1e79',
-                                 justifyContent:'center',
-                                 alignItems:'center',borderRadius:10,
-                               }} onPress={()=>Actions.Details()}>
-               <Text style={{color:'#fff',padding:'3%',fontSize:22,}}>View Complete Profile</Text>
-           </TouchableOpacity>
-      </View>
-      )
-  }
-
+ 
   render() {
    
     
     return (
-      <Container style={{ backgroundColor: "#ed1e79" }}>
-      <StatusBar barStyle="light-content" backgroundColor="#ed1e79"/>
-      
-                   <Button transparent onPress={() =>this.props.navigation.openDrawer()} style={{padding:'1%',backgroundColor:'#ed1e79',}}>
-                      <Image                      
-                       source={require("../../../../assets/images/menu.png")}
-                      style={{ width:deviceWidth/10, height: 40,paddingLeft:20}}
+      <Container style={{ backgroundColor: "#fff" }}>
+      <StatusBar barStyle="light-content" />
+               <View style={styles.mainmenu}>
+                <TouchableOpacity>
+                   <Image                      
+                       source={require("../../../../assets/images/logoicon.jpeg")}
+                      style={{ width:55, height: 55,paddingLeft:20}}
                       />
-                        <Text style={{color:'#ffffff',fontSize:deviceHeight/30,paddingLeft:'30%',padding:'5%'}}> Home </Text>                            
-                    </Button>
-              
-       <View>
+                  </TouchableOpacity>
+                <TouchableOpacity  onPress={() =>this.props.navigation.openDrawer()}>
+                   <Image                      
+                       source={require("../../../../assets/images/menuicon.png")}
+                      style={{ width:35, height: 35,paddingLeft:20}}
+                      />
+                  </TouchableOpacity>
+                   
+            </View>
+       <View style={styles.text}>
+       <Text style={{fontSize:34,color:'blue'}}> This is main page </Text>
                
-                      <FlatList
-                       style={{ margin:10}}
-                       data={this.state.dataitem}
-                       extraData={this.state}
-                      
-                       renderItem={this.renderdata}
-                        />
-              
        </View>
        
        
